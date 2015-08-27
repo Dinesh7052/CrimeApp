@@ -1,3 +1,20 @@
+/* hmtl, body { */
+/*     height: 100%; */
+/*     width: 100%; */
+/* } */
+/* html{ */
+/*     height:100%; */
+/* } */
+/* [ng-app]{ */
+/*     height:100%; */
+/* } */
+/* #map { */
+/*     height: 100%; */
+/* } */
+
+
+
+
 /* Empty. Add your own CSS if you like */
 .scroll {
     height: 100%;
@@ -54,13 +71,13 @@
 .title .row{padding:0}
 .title .row .col{padding:0}
 
-.item-input-wrapper{border-radius:0; margin-top: 5px;}
-.item-input-inset .item-input-wrapper input{border-radius:0; height:33px; width:100%}
+.item-input-wrapper{border-radius:0; margin-top: 5px; width:100%; }
+.item-input-inset .item-input-wrapper input{border-radius:0; height:33px; width:100%; background:#ccc; margin-top: 4px;}
 .item-input-inset .button.button-assertive {
-    height:33px;
+    height:32px;
     margin-top: 5px;
     line-height:32px;
-    margin-left:30px;
+    margin-left:5px;
   }
  .list .item-stable.item {
     border: medium none;
@@ -71,8 +88,8 @@
 }
   
 .icon_col .button{
-  margin-top:6px;
-  height:29px;
+  margin-top:7px;
+  height:32px;
 }
 
 .list .item.item-accordion {
@@ -114,3 +131,6 @@
 .slider-handle:hover {
   background: #ddd;
 }
+
+
+
