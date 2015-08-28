@@ -32,69 +32,9 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 </head>
-<body ng-app="demoapp" ng-controller="MainCtrl">
-	<ion-pane> <ion-header-bar class="bar-stable">
-	<div class="title">
-		<div class="row">
-			<div class="col col-90">
+<body ng-app="crimeApp">
 
-				<div class="list list-top">
-					<div class="item item-input-inset">
-						<label class="item-input-wrapper"> <input type="text"
-							placeholder="Address" ng-model="searchText">
-						</label>
-						<button class="button button-small button-assertive"
-							ng-click="search(searchText)">Show Location</button>
-					</div>
-				</div>
-			</div>
+	<ion-nav-view></ion-nav-view>
 
-			<div class="col">
-
-				<div ng-repeat="group in groups">
-					<ion-item class="item-stable" ng-click="toggleGroup(group)"
-						ng-class="{active: isGroupShown(group)}">
-					<div class="icon_col">
-						<i class="ion-chevron-down button button-assertive"></i>
-					</div>
-					</ion-item>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	</ion-header-bar> <ion-content> <ion-list class="list list_cd">
-	<div ng-repeat="group in groups">
-		<ion-item class="item-accordion" ng-repeat="item in group.items"
-			ng-show="isGroupShown(group)">
-		<div class="list">
-			<ul>
-				<li>
-					<div class="row">
-						<div class="col col-50">
-							<b class="head_fr"> Date From : </b> <label
-								class="item item-input" ng-click="opendateModal()"> <i
-								class="icon ion-ios-calendar placeholder-icon"></i> <input
-								type="text" placeholder="YY/MM/DD" readonly>
-							</label>
-						</div>
-						<div class="col">
-							<b class="head_fr"> Date To : </b> <label class="item item-input"
-								ng-click="opendateModal()"> <i
-								class="icon ion-ios-calendar placeholder-icon"></i> <input
-								type="text" placeholder="YY/MM/DD" readonly>
-							</label>
-						</div>
-
-					</div>
-				</li>
-			</ul>
-		</div>
-		</ion-item>
-	</div>
-	</ion-list>
-	<div id="map"></div>
-	</ion-content> </ion-pane>
 </body>
 </html>

@@ -1,0 +1,149 @@
+<ion-side-menus enable-menu-with-back-views="false"> <ion-side-menu-content>
+<ion-nav-bar class="bar-balanced" align-title="center"> <ion-nav-buttons>
+<div class="list list-top">
+	<div class="item item-input-inset">
+		<label class="item-input-wrapper"> <input type="text"
+			placeholder="Search Address" ng-model="data.searchText">
+		</label>
+		<button class="button button-small button-assertive"
+			ng-click="search(searchText)">Show Location</button>
+	</div>
+</div>
+</ion-nav-buttons> <ion-nav-buttons side="right">
+<button class="button button-icon button-clear ion-navicon"
+	menu-toggle="right"></button>
+</ion-nav-buttons> </ion-nav-bar> <ion-nav-view name="menuContent"> </ion-nav-view> </ion-side-menu-content> <ion-side-menu
+	side="right"> <ion-content class="menu_cont">
+<div class="list list-side">
+	<ul>
+		<li>
+			<h2 class="top_head">Filters</h2>
+		</li>
+		<li>
+			<h2>Timeline</h2>
+		</li>
+
+		<li>
+			<div class="row">
+				<div class="col col-50">
+					<b class="head_fr"> Date From : </b> <label class="item item-input"
+						ng-click="opendateModal('from')"> <i
+						class="icon ion-ios-calendar placeholder-icon"></i> <input
+						type="text" placeholder="YYYY/MM/DD" ng-model="datepickerfrom"
+						readonly>
+					</label>
+				</div>
+				<div class="col">
+					<b class="head_fr"> Date To : </b> <label class="item item-input"
+						ng-click="opendateModal('to')"> <i
+						class="icon ion-ios-calendar placeholder-icon"></i> <input
+						type="text" placeholder="YYYY/MM/DD" ng-model="datepickerto"
+						readonly>
+					</label>
+				</div>
+
+			</div>
+		</li>
+		<li>
+			<h2>Crime Type</h2>
+		</li>
+		<li>
+			<ul class="list">
+				<li class="item item-checkbox"><label class="checkbox">
+						<input type="checkbox">
+				</label> THEFT</li>
+				<li class="item item-checkbox"><label class="checkbox">
+						<input type="checkbox">
+				</label> ASSAULT</li>
+				<li class="item item-checkbox"><label class="checkbox">
+						<input type="checkbox">
+				</label> BATTERY</li>
+				<li class="item item-checkbox"><label class="checkbox">
+						<input type="checkbox">
+				</label> ROBBERY</li>
+			</ul>
+		</li>
+
+<!-- 		<li> -->
+
+<!-- 			<ul class="list list-scroll"> -->
+
+<!-- 				<li class="item"> -->
+
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">Crime Type</div> -->
+<!-- 						<div class="col">Arrest</div> -->
+<!-- 						<div class="col">Description</div> -->
+<!-- 						<div class="col">Date</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col ">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 				<li class="item"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col">THEFT</div> -->
+<!-- 						<div class="col">true</div> -->
+<!-- 						<div class="col">RETAIL THEFT</div> -->
+<!-- 						<div class="col">Sep 14, 2012</div> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 			</ul> -->
+<!-- 		</li> -->
+
+	</ul>
+</div>
+</ion-content> </ion-side-menu> </ion-side-menus>

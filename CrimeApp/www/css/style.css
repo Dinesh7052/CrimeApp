@@ -13,13 +13,172 @@
 /* } */
 
 
+.list.list-side li .list.list-scroll li {
+    height: 44px;
+}
+.list.list-side li .list.list-scroll li .row {
+    padding: 0;
+}
+.list.list-side li .list.list-scroll li .row .col {
+    line-height: 13px;
+    padding: 0;
+}
+
+.list.list-side li .list.list-head-sc li {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0;
+}
+.list.list-side li .list.list-head-sc {
+    margin-bottom: 0;
+}
+
+.list.list-side li .list.list-scroll{height:150px; overflow-y: scroll; overflow-x:hidden}
+
+.list.list-side li .list.list-scroll li {
+    color: #fff;
+    font-size: 12px;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.list.list-side li .list.list-scroll li {
+    color: #fff;
+    font-size: 12px;
+    padding: 0;
+}
+.table.table-hovered tr td {
+    font-size: 10px;
+    line-height: 11px;
+    padding: 3px 8px;
+    text-indent: 0;
+    vertical-align: inherit;
+}
+.table.table-hovered tr td:first-child {
+    font-size: 8px;
+    text-align: left;
+}
+.table.table-hovered tr th {
+    font-size: 12px;
+    text-align: left;
+    text-indent: 0;
+}
+.table.table-hovered {
+    width: 100%;
+}
+.table.table-hovered thead, tbody, tr, td, th {
+    display: block;
+}
+.table.table-hovered tr::after {
+    clear: both;
+    content: " ";
+    display: block;
+    visibility: hidden;
+}
+.table.table-hovered thead th {
+    background: #1aa564 none repeat scroll 0 0;
+    font-size: 11px;
+    height: 36px;
+    line-height: 13px;
+    padding: 4px 9px;
+}
+.table.table-hovered tbody {
+    background: #fff none repeat scroll 0 0;
+    color: #333;
+    height: 217px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.customLoader {
+    left: 3%;
+    margin: 0 auto;
+    position: fixed;
+    top: 18%;
+    width: 120px;
+    z-index: 99999;
+}
+.customLoader img {
+    height: 10px;
+    width: 30px;
+}
+.list.list-top {
+    width: 94%;
+}
+.list.list-side li h2.top_head {
+    margin-bottom: 14px;
+    margin-top: 13px;
+}
+.list.list-side li .item.item-input {
+    padding-left: 5px;
+}
+.list.list-side li .item.item-input input {
+    font-size: 13px;
+    height: 23px;
+    padding-right: 0;
+}
+.checkbox input, .checkbox-icon {
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+    margin-top:5px;
+}
+.list.list-side li h2.top_head {
+    margin-bottom: 14px;
+    margin-top: 13px;
+}
+
+.list.list-side li .list .item.item-checkbox .checkbox {
+    padding: 6px 0;
+}
+
+.list.list-side li .list .item.item-checkbox {
+    color: #fff;
+    margin-bottom: 12px;
+    padding-left: 39px;
+}
+.list.list-side li {
+    padding: 4px 12px;
+}
+.list.list-side li h2 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom:0;
+
+}
+b.head_fr {
+    color: #fff;
+    font-size: 13px;
+}
+.list.list-side li .list {
+    background: transparent none repeat scroll 0 0;
+}
+.list.list-side li .list .item {
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+}
 
 
 /* Empty. Add your own CSS if you like */
 .scroll {
     height: 100%;
 }
- 
+ .item-input-inset {
+    align-items: center;
+    background: transparent none repeat scroll 0 0;
+  }
+    
+.title.title-center.header-item {
+    display: none;
+}
+ion-side-menu.menu {
+    background: #33cd5f none repeat scroll 0 0;
+}
+    
 #map {
     width: 100%;
     height: 100%;
@@ -72,17 +231,29 @@
 .title .row .col{padding:0}
 
 .item-input-wrapper{border-radius:0; margin-top: 5px; width:100%; }
-.item-input-inset .item-input-wrapper input{border-radius:0; height:33px; width:100%; background:#ccc; margin-top: 4px;}
+.item-input-inset .item-input-wrapper input{
+	background: #fff none repeat scroll 0 0;
+    border-radius: 0px;
+    height: 33px;
+    margin-top: 0px;
+    padding: 6px 16px;
+    width: 100%;
+	
+	}
 .item-input-inset .button.button-assertive {
-    height:32px;
-    margin-top: 5px;
-    line-height:32px;
-    margin-left:5px;
+    background: #f47e1f none repeat scroll 0 0;
+    height: 34px;
+    line-height: 32px;
+    margin-left: 5px;
+    margin-top: 0;
   }
  .list .item-stable.item {
     border: medium none;
     padding: 0;
-} 
+}
+.bar-assertive {
+    background-color: #f47e1f;
+}
 .icon_col{
 	text-align:right;
 }

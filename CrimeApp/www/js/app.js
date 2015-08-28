@@ -1,5 +1,5 @@
 angular
-		.module('demoapp', [ 'ionic', 'pickadate' ])
+		.module('crimeApp', [ 'ionic', 'pickadate' ])
 
 		.run(function($ionicPlatform) {
 			$ionicPlatform.ready(function() {
@@ -12,22 +12,85 @@ angular
 			});
 		})
 
+		.config(function($stateProvider, $urlRouterProvider) {
+			$stateProvider.state('app', {
+				url : "/app",
+				abstract : true,
+				templateUrl : "templates/menu.html",
+				controller : 'MenuCtrl'
+			})
+
+			.state('app.map', {
+				url : "/map",
+				views : {
+					'menuContent' : {
+						templateUrl : "templates/map.html",
+						controller : 'MainCtrl'
+					}
+				}
+			})
+
+			$urlRouterProvider.otherwise('/app/map');
+
+		})
+
+		.controller(
+				'MenuCtrl',
+				[
+						'$scope',
+						'$ionicModal',
+						'$rootScope',
+						function($scope, $ionicModal, $rootScope) {
+							$scope.data = {};
+							$scope.datepickerfrom = '';
+							$scope.datepickerto = '';
+							var dateFromTo = '';
+							$ionicModal.fromTemplateUrl(
+									'templates/datemodal.html',
+									function(modal) {
+										$scope.datemodal = modal;
+									}, {
+										scope : $scope,
+										animation : 'slide-in-up'
+									});
+
+							$scope.opendateModal = function(text) {
+								dateFromTo = text;
+								$scope.datemodal.show();
+							};
+
+							$scope.closedateModal = function(modal) {
+								$scope.datemodal.hide();
+								if (dateFromTo == 'from') {
+									$scope.datepickerfrom = modal;
+								} else if (dateFromTo == 'to') {
+									$scope.datepickerto = modal;
+								}
+								dateFromTo = '';
+							};
+
+							$scope.search = function(value) {
+								$rootScope.searchAddress = $scope.data.searchText;
+								$scope.data.searchText = '';
+							}
+						} ])
+
 		.controller(
 				'MainCtrl',
 				[
 						'$scope',
 						'$http',
-						'$ionicLoading',
 						'$ionicModal',
-						function($scope, $http, $ionicLoading, $ionicModal) {
+						'$rootScope',
+						function($scope, $http, $ionicModal, $rootScope) {
 							$scope.radius = '';
-							$scope.searchText = '';
+							$scope.showloader = '';
 							var geocoder = new google.maps.Geocoder();
 							var tiles = L
 									.tileLayer(
 											'http://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2hhdWhhbm1vaGl0IiwiYSI6IjE0YTljYTgyY2IzNDVlMmI0MTZhNzMwOGRkMzI4MGY3In0.vNQxFF8XYPTbbjm7fD72mg',
 											{
-												maxZoom : 21,
+												maxZoom : 20,
 												attribution : '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
 											}), latlng = L.latLng(41.8838113,
 									-87.6317489);
@@ -37,20 +100,19 @@ angular
 								layers : [ tiles ]
 							});
 							var markers = L.markerClusterGroup({
-								chunkedLoading : true
+								chunkedLoading : true,
+								disableClusteringAtZoom : 18
 							});
 							hitApi();
 							function hitApi() {
-								$ionicLoading.show({
-									template : 'Loading...'
-								});
+								$scope.showloader = 'true';
 								$http
 										.get(
 												'http://stagingcrimereports.herokuapp.com/showData?lat=41.8838113&lang=-87.6317489&limit=250')
 										.success(
 												function(res, status, config,
 														header) {
-													$ionicLoading.hide();
+													$scope.showloader = '';
 													markers.clearLayers();
 													for ( var i = 0; i < res.length; i++) {
 														var response = getContent(res[i]);
@@ -78,7 +140,7 @@ angular
 										.error(
 												function(err, status, config,
 														header) {
-													$ionicLoading.hide();
+													$scope.showloader = '';
 													alert('Error');
 													console
 															.log("Error comes in this section");
@@ -92,6 +154,12 @@ angular
 							$scope.map.on('dragend', function(e) {
 								hitApi();
 							})
+
+							$rootScope.$watch('searchAddress', function(n, o) {
+								if (o != n) {
+									getAddress($rootScope.searchAddress);
+								}
+							});
 
 							$scope.groups = [];
 							for ( var i = 0; i < 1; i++) {
@@ -124,7 +192,6 @@ angular
 							function rad(x) {
 								return x * Math.PI / 180;
 							}
-							;
 
 							function getDistance(p1, p2) {
 								var R = 6378137; // Earth?s mean radius in
@@ -203,46 +270,47 @@ angular
 								return infoData;
 							}
 
-							/*
-							 * if given group is the selected group, deselect it
-							 * else, select the given group
-							 */
-							$scope.toggleGroup = function(group) {
-								if ($scope.isGroupShown(group)) {
-									$scope.shownGroup = null;
-								} else {
-									$scope.shownGroup = group;
-								}
-							};
-							$scope.isGroupShown = function(group) {
-								return $scope.shownGroup === group;
-							};
+							// /*
+							// * if given group is the selected group, deselect
+							// it
+							// * else, select the given group
+							// */
+							// $scope.toggleGroup = function(group) {
+							// if ($scope.isGroupShown(group)) {
+							// $scope.shownGroup = null;
+							// } else {
+							// $scope.shownGroup = group;
+							// }
+							// };
+							// $scope.isGroupShown = function(group) {
+							// return $scope.shownGroup === group;
+							// };
 
-							$ionicModal.fromTemplateUrl(
-									'templates/datemodal.html',
-									function(modal) {
-										$scope.datemodal = modal;
-									}, {
-										scope : $scope,
-										animation : 'slide-in-up'
-									});
-
-							$scope.opendateModal = function() {
-								$scope.datemodal.show();
-							};
-
-							$scope.closedateModal = function(modal) {
-								$scope.datemodal.hide();
-								$scope.datepicker = modal;
-							};
-
-							$scope.search = function(value) {
-								$scope.searchText = '';
-								var markers = L.markerClusterGroup({
-									chunkedLoading : true
-								});
-								getAddress(value);
-							}
+							// $ionicModal.fromTemplateUrl(
+							// 'templates/datemodal.html',
+							// function(modal) {
+							// $scope.datemodal = modal;
+							// }, {
+							// scope : $scope,
+							// animation : 'slide-in-up'
+							// });
+							//
+							// $scope.opendateModal = function() {
+							// $scope.datemodal.show();
+							// };
+							//
+							// $scope.closedateModal = function(modal) {
+							// $scope.datemodal.hide();
+							// $scope.datepicker = modal;
+							// };
+							//
+							// $scope.search = function(value) {
+							// $scope.searchText = '';
+							// var markers = L.markerClusterGroup({
+							// chunkedLoading : true
+							// });
+							// getAddress(value);
+							// }
 
 							function getAddress(value) {
 								if (value != null || value !== undefined) {
